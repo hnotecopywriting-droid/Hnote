@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-Note | Entrance</title>
+    <style>
+        body { background: #000; color: #d4af37; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .gate-container { text-align: center; border: 1px solid #333; padding: 50px; background: rgba(5,5,5,0.9); }
+        input { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px; text-align: center; font-size: 1.2rem; letter-spacing: 10px; width: 150px; outline: none; }
+        .hint { font-size: 0.7rem; color: #444; margin-top: 20px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="gate-container">
+    <h2>RESONANCE CHECK</h2>
+    <p>Enter your assigned Frequency Code:</p>
+    <input type="password" id="accessCode" maxlength="4" placeholder="0000">
+    <br><br>
+    <button onclick="checkFrequency()" style="background: #d4af37; border: none; padding: 10px 20px; cursor: pointer;">ENTER</button>
+    <div class="hint">Frequency: 4.2Hz + 7.2Hz</div>
+</div>
+
+<script>
+    function checkFrequency() {
+        const code = document.getElementById('accessCode').value;
+        if (code === "4272") {
+            alert("Frequency Match. Welcome Home.");
+            window.location.href = "StudentDashboard.html";
+        } else {
+            alert("Signal Noise Detected. Access Denied.");
+        }
+    }
+</script>
+
+</body>
+</html>
