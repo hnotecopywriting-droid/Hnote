@@ -1,0 +1,97 @@
+<style>
+    .roadmap-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px;
+        background: #000;
+        border-left: 2px solid #d4af37;
+        margin: 20px;
+    }
+
+    .stage-block {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .stage-block::before {
+        content: '';
+        position: absolute;
+        left: -11px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background: #000;
+        border: 2px solid #d4af37;
+        border-radius: 50%;
+    }
+
+    .stage-title {
+        color: #d4af37;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+
+    .week-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .week-node {
+        border: 1px solid #333;
+        padding: 15px;
+        text-align: center;
+        font-size: 0.8rem;
+        transition: 0.3s;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .week-node:hover {
+        border-color: #d4af37;
+        color: #d4af37;
+        background: rgba(212, 175, 55, 0.05);
+    }
+
+    /* Active State for when they finish a week */
+    .completed {
+        border-color: #d4af37;
+        color: #fff;
+        background: rgba(212, 175, 55, 0.1);
+    }
+</style>
+
+<div class="roadmap-container">
+    <div class="stage-block">
+        <div class="stage-title">Stage 1: Internal Resonance</div>
+        <div class="week-grid">
+            <div class="week-node completed">WK 1: Grounding</div>
+            <div class="week-node">WK 2: Intervals</div>
+            <div class="week-node">WK 3: The Spark</div>
+            <div class="week-node">WK 4: The Anthem</div>
+        </div>
+    </div>
+
+    <div class="stage-block">
+        <div class="stage-title">Stage 2: Strategic Synthesis</div>
+        <div class="week-grid">
+            <div class="week-node">WK 5: Branding</div>
+            <div class="week-node">WK 6: UI Design</div>
+            <div class="week-node">WK 7: Portals</div>
+            <div class="week-node">WK 8: Blueprint</div>
+        </div>
+    </div>
+
+    <div class="stage-block" style="border-left: none;">
+        <div class="stage-title">Stage 3: Manifestation</div>
+        <div class="week-grid">
+            <div class="week-node">WK 9: Wealth</div>
+            <div class="week-node">WK 10: Systems</div>
+            <div class="week-node">WK 11: Pitching</div>
+            <div class="week-node">WK 12: LAUNCH</div>
+        </div>
+    </div>
+</div>
