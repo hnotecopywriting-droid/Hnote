@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-Note | Clinical Business Assessment</title>
+    <style>
+        body { background: #1a1a1a; color: #d4af37; font-family: 'Courier New', monospace; padding: 40px; }
+        .assessment-container { 
+            background: #000; 
+            border: 2px solid #d4af37; 
+            padding: 30px; 
+            max-width: 900px; 
+            margin: auto; 
+            box-shadow: 10px 10px 0px rgba(212, 175, 55, 0.2);
+        }
+        h1 { text-transform: uppercase; letter-spacing: 5px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .section-header { background: #d4af37; color: #000; padding: 5px 10px; font-weight: bold; margin-top: 20px; text-transform: uppercase; }
+        
+        .row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid #222; }
+        .label { font-size: 0.9rem; }
+        input[type="number"] { background: transparent; border: 1px solid #d4af37; color: #fff; padding: 5px; width: 60px; text-align: center; }
+        
+        .risk-indicator { font-size: 0.7rem; text-transform: uppercase; }
+        .high-risk { color: #ff4444; }
+        .low-risk { color: #00ff00; }
+
+        textarea { width: 100%; height: 100px; background: #111; border: 1px solid #333; color: #fff; margin-top: 10px; padding: 10px; font-family: inherit; }
+        .footer-audit { margin-top: 30px; font-size: 0.7rem; color: #444; display: flex; justify-content: space-between; }
+        
+        .save-btn { background: #d4af37; color: #000; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; margin-top: 20px; letter-spacing: 2px; }
+        .save-btn:hover { background: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="assessment-container">
+    <h1>Venture Risk Assessment</h1>
+    <p style="color: #888;">Protocol: Initial Intake & Diagnostic Phase</p>
+
+    <div class="section-header">Core Domain Assessment (Scale 1-10)</div>
+    
+    <div class="row" style="font-weight: bold; font-size: 0.7rem; color: #666;">
+        <span>CATEGORY</span>
+        <span>RISK LEVEL (10=HIGH)</span>
+        <span>POTENTIAL (10=HIGH)</span>
+    </div>
+
+    <div class="row">
+        <span class="label">1. PLANS & DEVELOPMENT</span>
+        <input type="number" min="1" max="10" value="5">
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <div class="row">
+        <span class="label">2. DEMOGRAPHICAL</span>
+        <input type="number" min="1" max="10" value="5">
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <div class="row">
+        <span class="label">3. FINANCIAL</span>
+        <input type="number" min="1" max="10" value="5">
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <div class="row">
+        <span class="label">4. MANAGEMENT</span>
+        <input type="number" min="1" max="10" value="5">
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <div class="row">
+        <span class="label">5. PRODUCT / SERVICES</span>
+        <input type="number" min="1" max="10" value="5">
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <div class="section-header">Clinical Observation & Treatment Priority</div>
+    <textarea placeholder="Identify the 'Substance' of business interference. Which category requires immediate 'Surgical' intervention?"></textarea>
+
+    <button class="save-btn" onclick="alert('File Encrypted and Saved to Clinical Directory.')">LOCK FILE & UPDATE AUDIT LOG</button>
+
+    <div class="footer-audit">
+        <span>ID: H-NOTE-INTAKE-2026</span>
+        <span>AUDIT STATUS: PENDING SIGNATURE</span>
+    </div>
+</div>
+
+</body>
+</html>
