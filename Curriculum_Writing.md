@@ -1,4 +1,5 @@
-Week 1: The Automatic Capture (The Receive-Thing)
+Stage 1, Class 3: The Script of Authority (Writing & Art)
+Duration: 4 Weeks | Focus: Capturing the Frequency | The Goal: To produce the "Manifesto of the Self."Week 1: The Automatic Capture (The Receive-Thing)
 The Lesson: Silencing the "Editor" (the Man-Logic). We use the 4.2 Hz pulse to enter a state where the hand moves faster than the brain.
 
 The Exercise: "Void-Writing." 10 minutes of non-stop writing without looking at the page, specifically trying to describe the "Home" they remember.
