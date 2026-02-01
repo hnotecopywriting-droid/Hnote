@@ -87,13 +87,15 @@
 </div>
 
 <script>
-    function submitToVault() {
+   function submitToVault() {
         const log = document.getElementById('log');
-        log.innerHTML = "> Establishing connection...<br>> Checking file resonance...<br>> Scanning for 4.2Hz alignment...";
+        log.innerHTML = "> Establishing connection...<br>> Checking file resonance...";
         
         setTimeout(() => {
-            log.innerHTML += "<br>> [SUCCESS] Files encrypted and queued for audit.<br>> The Echo has been received.";
-        }, 2000);
+            // This line sends them to the Success Page after 3 seconds
+            window.location.href = "ManifestationComplete.html";
+        }, 3000);
+    }
     }
 </script>
 
