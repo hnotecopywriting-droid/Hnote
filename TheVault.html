@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-Note | The Vault Submission Terminal</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #d4af37;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .terminal-container {
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid #d4af37;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+            background: rgba(10, 10, 10, 0.9);
+        }
+        .status-bar {
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            font-weight: normal;
+            letter-spacing: 3px;
+        }
+        .upload-area {
+            border: 2px dashed #333;
+            padding: 50px;
+            text-align: center;
+            margin: 20px 0;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .upload-area:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .file-input {
+            display: none;
+        }
+        .btn-submit {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .log-output {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <div class="status-bar">H-Note System v1.0 // Frequency Check: 4.2Hz // Status: Secure</div>
+    <h2>Stage 3: Manifestation Submission</h2>
+    <p>Upload your Business Treatment, Creative Assets, or Marketing Blueprints for resonance validation.</p>
+    
+    <label for="file-upload" class="upload-area" id="drop-zone">
+        CLICK OR DRAG FILES HERE TO ENTER THE VAULT
+        <input type="file" id="file-upload" class="file-input" multiple>
+    </label>
+
+    <button class="btn-submit" onclick="submitToVault()">Initiate Validation</button>
+
+    <div class="log-output" id="log">
+        > Awaiting transmission...
+    </div>
+</div>
+
+<script>
+    function submitToVault() {
+        const log = document.getElementById('log');
+        log.innerHTML = "> Establishing connection...<br>> Checking file resonance...<br>> Scanning for 4.2Hz alignment...";
+        
+        setTimeout(() => {
+            log.innerHTML += "<br>> [SUCCESS] Files encrypted and queued for audit.<br>> The Echo has been received.";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
