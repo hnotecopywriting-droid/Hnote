@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-Note Creative Solutions | Strike Your Note</title>
     <style>
+        /* The Clear Film Layer */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* This creates a subtle "Silk" grain */
+    background: url('https://www.transparenttextures.com/patterns/stardust.png'); 
+    opacity: 0.15; /* Keeps it "Clear" but visible */
+    pointer-events: none; /* Allows users to click through the film */
+    z-index: 9999; /* Ensures it stays on top of everything */
+}
+
+/* The Subtle "Breathe" Animation */
+@keyframes filmBreathe {
+    0% { opacity: 0.12; }
+    50% { opacity: 0.18; }
+    100% { opacity: 0.12; }
+}
+
+body::after {
+    animation: filmBreathe 14.2s infinite ease-in-out; /* Pulsing at a 14.2s cycle for calm */
+}
         body {
             margin: 0;
             padding: 0;
