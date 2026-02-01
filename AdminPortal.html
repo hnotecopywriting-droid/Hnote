@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-Note ADMIN | Frequency Monitor</title>
+    <style>
+        body { background: #000; color: #d4af37; font-family: monospace; padding: 20px; }
+        .dashboard { border: 2px solid #333; padding: 20px; border-radius: 5px; }
+        .student-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #222; }
+        .status-ready { color: #00ff00; } /* Resonant */
+        .status-tuning { color: #ffae00; } /* Needs Calibration */
+        .btn { background: #d4af37; color: #000; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>ADMIN: Frequency Monitor</h1>
+        <div class="student-row">
+            <span><strong>STUDENT ID</strong></span>
+            <span><strong>STAGE/WEEK</strong></span>
+            <span><strong>ALIGNMENT</strong></span>
+            <span><strong>ACTION</strong></span>
+        </div>
+        <div class="student-row">
+            <span>#0001 - The Pioneer</span>
+            <span>Stage 1 / Week 4</span>
+            <span class="status-ready">4.2 Hz SYNC</span>
+            <button class="btn" onclick="window.location.href='TheVault.html'">Review Manifesto</button>
+        </div>
+    </div>
+</body>
+</html>
