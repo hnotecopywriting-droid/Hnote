@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-Note Admin | Clinical Business Assessment</title>
+    <style>
+        body { background: #f4f4f4; color: #333; font-family: Arial, sans-serif; padding: 40px; }
+        .file-container { background: white; border: 1px solid #ccc; padding: 20px; box-shadow: 5px 5px 0px #d4af37; max-width: 800px; margin: auto; }
+        h1 { border-bottom: 2px solid #000; padding-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; }
+        .assessment-row { display: flex; justify-content: space-between; margin: 15px 0; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+        input[type="number"] { width: 50px; border: 1px solid #d4af37; text-align: center; }
+        textarea { width: 100%; height: 60px; margin-top: 10px; border: 1px solid #ccc; }
+        .audit-stamp { color: #888; font-size: 0.7rem; margin-top: 30px; text-align: right; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="file-container">
+    <h1>Venture Rehabilitation Assessment & Intake</h1>
+    <p><strong>Client Name:</strong> <input type="text" placeholder="Full Name"> | <strong>Date:</strong> 2026-02-01</p>
+    
+    <div class="assessment-row">
+        <span>1. Plans & Development (Vision/Strategy)</span>
+        <input type="number" min="1" max="10" value="5">
+    </div>
+    <div class="assessment-row">
+        <span>2. Demographical (Market/Audience)</span>
+        <input type="number" min="1" max="10" value="5">
+    </div>
+    <div class="assessment-row">
+        <span>3. Financial (Capital/Revenue)</span>
+        <input type="number" min="1" max="10" value="5">
+    </div>
+    <div class="assessment-row">
+        <span>4. Management (Leadership/System)</span>
+        <input type="number" min="1" max="10" value="5">
+    </div>
+    <div class="assessment-row">
+        <span>5. Product/Services (The Object)</span>
+        <input type="number" min="1" max="10" value="5">
+    </div>
+
+    <h3>Clinical Summary / Primary Business Obstacle</h3>
+    <textarea placeholder="Note the 'Substance' of their failure here..."></textarea>
+
+    <button style="margin-top: 20px; background: #000; color: #d4af37; border: none; padding: 10px 20px; cursor: pointer; width: 100%;">SAVE TO AUDIT FILE</button>
+    
+    <div class="audit-stamp">H-Note Compliance // Protocol 4.2-7.2 // Secure File</div>
+</div>
+
+</body>
+</html>
