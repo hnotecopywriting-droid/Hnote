@@ -2,31 +2,241 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>H-Note ADMIN | Frequency Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Note ADMIN | Central Command & Audit Terminal</title>
     <style>
-        body { background: #000; color: #d4af37; font-family: monospace; padding: 20px; }
-        .dashboard { border: 2px solid #333; padding: 20px; border-radius: 5px; }
-        .student-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #222; }
-        .status-ready { color: #00ff00; } /* Resonant */
-        .status-tuning { color: #ffae00; } /* Needs Calibration */
-        .btn { background: #d4af37; color: #000; border: none; padding: 5px 10px; cursor: pointer; }
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #050505;
+            --panel-bg: #111111;
+            --text-gray: #a0a0a0;
+            --risk-red: #ff4444;
+            --safe-green: #00ff00;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--gold);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header h1 {
+            margin: 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .status-light {
+            font-size: 0.8rem;
+            color: var(--safe-green);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        /* Student Management Section */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid #333;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .student-card {
+            background: #1a1a1a;
+            border-left: 4px solid var(--gold);
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .btn-clinical { border-color: #555; color: var(--text-gray); }
+        .btn-discharge { border-color: var(--safe-green); color: var(--safe-green); }
+
+        /* Clinical Assessment Mini-Table */
+        .risk-mini-table {
+            width: 100%;
+            font-size: 0.7rem;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .risk-mini-table td {
+            border: 1px solid #222;
+            padding: 4px;
+        }
+
+        /* Syllabus Sidebar */
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .syllabus-link {
+            display: block;
+            color: var(--text-gray);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid #222;
+            font-size: 0.8rem;
+        }
+
+        .syllabus-link:hover { color: var(--gold); }
+
+        .audit-log {
+            font-size: 0.65rem;
+            color: #444;
+            height: 150px;
+            overflow-y: auto;
+            background: #000;
+            padding: 10px;
+            border: 1px solid #222;
+        }
     </style>
 </head>
 <body>
-    <div class="dashboard">
-        <h1>ADMIN: Frequency Monitor</h1>
-        <div class="student-row">
-            <span><strong>STUDENT ID</strong></span>
-            <span><strong>STAGE/WEEK</strong></span>
-            <span><strong>ALIGNMENT</strong></span>
-            <span><strong>ACTION</strong></span>
+
+    <div class="header">
+        <div>
+            <h1>H-Note Central Admin</h1>
+            <div class="status-light">● SYSTEM ACTIVE // AUDIT MODE ENABLED</div>
         </div>
-        <div class="student-row">
-            <span>#0001 - The Pioneer</span>
-            <span>Stage 1 / Week 4</span>
-            <span class="status-ready">4.2 Hz SYNC</span>
-            <button class="btn" onclick="window.location.href='TheVault.html'">Review Manifesto</button>
+        <div style="text-align: right; font-size: 0.8rem;">
+            DATE: 2026-02-01<br>
+            OPERATOR: SOURCE_ADMIN
         </div>
     </div>
+
+    <div class="grid-container">
+        <div class="panel">
+            <div class="panel-title">Active Venture Rehabilitation Files</div>
+
+            <div class="student-card">
+                <div class="student-info">
+                    <span><strong>FILE #44001:</strong> JOHN DOE</span>
+                    <span>STAGE: 3 (WEEK 11)</span>
+                </div>
+                
+                <table class="risk-mini-table">
+                    <tr>
+                        <td>Plans: 3/10</td>
+                        <td>Demo: 5/10</td>
+                        <td>Finance: 8/10 (High Risk)</td>
+                        <td>Mgmt: 2/10</td>
+                        <td>Prod: 4/10</td>
+                    </tr>
+                </table>
+
+                <div class="action-row">
+                    <button class="btn" onclick="window.location.href='TheVault.html'">Review Vault Submissions</button>
+                    <button class="btn btn-clinical" onclick="window.location.href='clinical_files/Assessment.html'">Intake/Risk</button>
+                    <button class="btn btn-clinical" onclick="window.location.href='clinical_files/SOAP_Notes.html'">SOAP Notes</button>
+                    <button class="btn btn-discharge" onclick="window.location.href='clinical_files/ExitPlan_Template.html'">Final Discharge</button>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="student-info">
+                    <span><strong>FILE #44002:</strong> JANE SMITH</span>
+                    <span>STAGE: 1 (WEEK 2)</span>
+                </div>
+                
+                <table class="risk-mini-table">
+                    <tr>
+                        <td>Plans: 7/10</td>
+                        <td>Demo: 8/10</td>
+                        <td>Finance: 4/10</td>
+                        <td>Mgmt: 9/10 (High Risk)</td>
+                        <td>Prod: 6/10</td>
+                    </tr>
+                </table>
+
+                <div class="action-row">
+                    <button class="btn" onclick="window.location.href='TheVault.html'">Review Vault Submissions</button>
+                    <button class="btn btn-clinical" onclick="window.location.href='clinical_files/Assessment.html'">Intake/Risk</button>
+                    <button class="btn btn-clinical" onclick="window.location.href='clinical_files/SOAP_Notes.html'">SOAP Notes</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel">
+                <div class="sidebar-section">
+                    <div class="panel-title">Syllabus Repository</div>
+                    <a href="Syllabus.md" class="syllabus-link">> Stage 1: Internal Resonance</a>
+                    <a href="Syllabus2.md" class="syllabus-link">> Stage 2: Strategic Synthesis</a>
+                    <a href="Syllabus3.md" class="syllabus-link">> Stage 3: Materialization</a>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="panel-title">System Audit Log</div>
+                    <div class="audit-log" id="log">
+                        [12:42:01] System boot sequence complete.<br>
+                        [12:42:15] Access Code 4272 validated.<br>
+                        [12:43:10] File #44001 SOAP notes updated.<br>
+                        [12:44:00] Awaiting new manifestation signal...
+                    </div>
+                </div>
+
+                <button class="btn" style="width: 100%; border-color: var(--risk-red); color: var(--risk-red);" onclick="alert('Emergency Lock initiated. All portals closed.')">Emergency System Lock</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
 </body>
 </html>
