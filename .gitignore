@@ -1,0 +1,9 @@
+# H-Note Master Filter
+node_modules
+.env
+*.mp3
+*.wav
+*.jfif
+.DS_Store
+dist
+build
