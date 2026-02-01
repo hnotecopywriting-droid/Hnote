@@ -60,6 +60,45 @@
         <p>H-Note Creative Solutions: Architectural re-alignment through the Fine Arts. Harness the frequency of creation to build your professional manifestation.</p>
         <button class="cta-button">Find Your Frequency</button>
     </section>
+<script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let isPlaying = false;
+    let baseOsc, dingOsc, gainNode;
 
+    function startFrequency() {
+        if (isPlaying) return;
+        
+        // Base 4.2 Hz Pulse (The Nothing-Thing)
+        baseOsc = audioCtx.createOscillator();
+        baseOsc.type = 'sine';
+        baseOsc.frequency.setValueAtTime(4.2, audioCtx.currentTime); 
+
+        // 7.2 Hz Ding (The Gateway)
+        dingOsc = audioCtx.createOscillator();
+        dingOsc.type = 'sine';
+        dingOsc.frequency.setValueAtTime(7.2, audioCtx.currentTime);
+
+        gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Low volume, "felt" not heard
+
+        baseOsc.connect(gainNode);
+        dingOsc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        baseOsc.start();
+        dingOsc.start();
+        isPlaying = true;
+        console.log("H-Note Resonance Active: 4.2Hz / 7.2Hz");
+    }
+
+    // Attach to the Hero Button
+    document.querySelector('.cta-button').addEventListener('click', () => {
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        startFrequency();
+        alert("The Loop is closing. Can you feel the Note?");
+    });
+</script>
 </body>
 </html>
