@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-NOTE | Creative Solutions</title>
-    
     <style>
         :root {
             --gold-bright: #f0d78c; 
@@ -11,52 +11,101 @@
             --shadow-bg: #1a1a1a;
         }
 
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
             background: radial-gradient(circle, #2a2a2a 0%, #0a0a0a 100%);
             color: white;
-            margin: 0;
             font-family: 'Times New Roman', serif;
-        }
-
-        /* Hero and Logo styling */
-        .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        .hero {
             text-align: center;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .logo-area img {
+            width: 500px;
+            max-width: 90%;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.1));
+            margin-bottom: 40px;
         }
 
         .nav-pillars {
             display: flex;
-            gap: 20px;
-            margin-top: 50px;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .pillar {
             border: 1px solid var(--gold-deep);
-            padding: 20px;
+            padding: 20px 40px;
             text-decoration: none;
             color: var(--gold-bright);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: 0.4s;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .pillar:hover {
+            background: var(--gold-deep);
+            color: black;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .portal-link {
+            margin-top: 60px;
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .portal-link:hover {
+            color: var(--gold-bright);
+        }
+
+        /* Responsive Mobile View */
+        @media (max-width: 768px) {
+            .nav-pillars {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .pillar {
+                width: 80%;
+            }
         }
     </style>
 </head>
-
 <body>
+
     <section class="hero">
         <div class="logo-area">
-            <img src="Logo.jpg" alt="H-Note Logo" style="width: 400px; height: auto;">
+            <img src="Logo.jpg" alt="H-Note Logo">
         </div>
 
         <div class="nav-pillars">
-            <a href="Syllabus.md" class="pillar">MUSIC</a>
-            <a href="Syllabus2.md" class="pillar">DANCE</a>
-            <a href="Syllabus3.md" class="pillar">WRITING</a>
+            <a href="Syllabus.md" class="pillar">Music</a>
+            <a href="Syllabus2.md" class="pillar">Dance</a>
+            <a href="Syllabus3.md" class="pillar">Writing</a>
         </div>
 
-        <br><br>
-        <a href="Gateway.html" style="color: #888; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px;">ENTER THE VAULT</a>
+        <br>
+        <a href="Gateway.html" class="portal-link">Enter The Vault</a>
     </section>
 
 </body>
