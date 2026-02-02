@@ -68,11 +68,28 @@ body::after {
 </head>
 <body>
 
-    <section class="hero">
-        <h1>The Loop is Closing</h1>
-        <p>H-Note Creative Solutions: Architectural re-alignment through the Fine Arts. Harness the frequency of creation to build your professional manifestation.</p>
-        <button class="cta-button">Find Your Frequency</button>
-    </section>
+   <section class="hero">
+    <div class="logo-area">
+        <img src="Logo.jpg" alt="H-Note Logo" style="width: 450px; max-width: 90%; height: auto; filter: drop-shadow(0 0 10px rgba(212,175,55,0.2));">
+    </div>
+
+    <div class="nav-pillars">
+        <a href="Syllabus.md" class="pillar">
+            <h3>01. MUSIC</h3>
+            <p>Sonic Archeology</p>
+        </a>
+        <a href="Syllabus2.md" class="pillar">
+            <h3>02. DANCE</h3>
+            <p>Kinetic Geometry</p>
+        </a>
+        <a href="Syllabus3.md" class="pillar">
+            <h3>03. WRITING</h3>
+            <p>Narrative Architecture</p>
+        </a>
+    </div>
+
+    <a href="Gateway.html" class="portal-btn">Enter The Vault</a>
+</section>
 <script>
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     let isPlaying = false;
