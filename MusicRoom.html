@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-NOTE | The Resonance Chamber</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--gold);
+            font-family: 'Times New Roman', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .chamber-title {
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+
+        /* The Visual Pulse */
+        .pulse-circle {
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            animation: breathe 14.2s infinite ease-in-out; /* Set to a multiple of 4.2 */
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.7; box-shadow: 0 0 50px rgba(212, 175, 55, 0.3); }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+
+        audio {
+            filter: invert(1) hue-rotate(180deg) brightness(1.5); /* Makes standard player look "Gold" */
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        audio:hover { opacity: 1; }
+
+        .back-link {
+            margin-top: 50px;
+            text-decoration: none;
+            color: #444;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .back-link:hover { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div class="chamber-title">4.2 Hz Foundation</div>
+
+    <div class="pulse-circle">
+        <div style="font-size: 0.6rem; letter-spacing: 2px;">RESONATING</div>
+    </div>
+
+    <audio controls loop>
+        <source src="Foundation_42.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <a href="index.html" class="back-link">Return to Archive</a>
+
+</body>
+</html>
