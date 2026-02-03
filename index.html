@@ -3,163 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-NOTE | The Archive</title>
+    <title>H-NOTE | The Clubhouse</title>
     <style>
         :root {
             --gold-bright: #f0d78c; 
             --gold-deep: #b08d32;
-            --shadow-bg: #1a1a1a;
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background: radial-gradient(circle, #2a2a2a 0%, #0a0a0a 100%);
             color: white;
             font-family: 'Times New Roman', serif;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
             overflow-x: hidden;
         }
 
-        .hero {
-            text-align: center;
-            padding: 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
+        .hero { text-align: center; padding: 40px 20px; max-width: 1000px; width: 100%; }
 
-        /* The Portrait Container */
+        /* Poetry Section */
+        .manifesto-text { max-width: 700px; margin: 0 auto 50px auto; }
+        .poetry {
+            font-style: italic; color: var(--gold-bright);
+            line-height: 1.8; letter-spacing: 1px; font-size: 1.1rem;
+            margin-bottom: 20px; text-shadow: 0 0 10px rgba(240, 215, 140, 0.2);
+        }
+        .divider { height: 1px; width: 100px; background: var(--gold-deep); margin: 20px auto; }
+        .about-text { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #888; }
+
+        /* Architect Image */
         .architect-wrapper {
-            position: relative;
-            display: inline-block;
-            border: 3px solid var(--gold-deep);
-            padding: 10px;
-            background: #000;
-            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            margin-bottom: 30px;
+            position: relative; display: inline-block;
+            border: 3px solid var(--gold-deep); padding: 10px; background: #000;
+            transition: 0.8s; cursor: pointer; margin-bottom: 40px;
         }
+        .architect-wrapper:hover { box-shadow: 0 0 50px rgba(212, 175, 55, 0.3); border-color: var(--gold-bright); }
+        #architect-pic { width: 550px; max-width: 90vw; display: block; filter: grayscale(20%); }
 
-        .architect-wrapper:hover {
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
-            border-color: var(--gold-bright);
-            transform: scale(1.01);
-        }
-
-        #architect-pic {
-            width: 650px; 
-            max-width: 90vw;
-            display: block;
-            filter: grayscale(20%) contrast(1.1);
-            transition: 0.5s;
-        }
-
-        /* The Scanning Line Effect */
         .scan-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gold-bright);
-            opacity: 0;
-            box-shadow: 0 0 15px var(--gold-bright);
-            z-index: 10;
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gold-bright); opacity: 0; z-index: 10;
         }
+        .active-scan .scan-line { opacity: 0.7; animation: scanMove 4s linear infinite; }
+        @keyframes scanMove { 0% { top: 0%; } 100% { top: 100%; } }
 
-        .active-scan .scan-line {
-            opacity: 0.7;
-            animation: scanMove 4s linear infinite;
-        }
-
-        @keyframes scanMove {
-            0% { top: 0%; }
-            100% { top: 100%; }
-        }
-
-        .instruction {
-            color: var(--gold-bright);
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            opacity: 0.5;
-        }
-
-        .nav-pillars {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
+        /* Navigation Pillars */
+        .nav-pillars { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .pillar {
-            border: 1px solid var(--gold-deep);
-            padding: 15px 35px;
-            text-decoration: none;
-            color: var(--gold-bright);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            transition: 0.4s;
-            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--gold-deep); padding: 12px 25px;
+            text-decoration: none; color: var(--gold-bright);
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
+            transition: 0.4s; background: rgba(0,0,0,0.5); cursor: pointer;
         }
+        .pillar:hover { background: var(--gold-deep); color: black; }
 
-        .pillar:hover {
-            background: var(--gold-deep);
-            color: black;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        /* Dropdowns */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: rgba(10, 10, 10, 0.95);
+            min-width: 220px; border: 1px solid var(--gold-deep); z-index: 100;
+            backdrop-filter: blur(10px);
         }
-
-        .portal-link {
-            margin-top: 40px;
-            display: inline-block;
-            color: #444;
-            text-decoration: none;
-            font-size: 0.6rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            transition: 0.3s;
+        .dropdown-content a {
+            color: var(--gold-bright); padding: 12px 20px; text-decoration: none;
+            display: block; text-align: left; font-size: 0.7rem; letter-spacing: 2px;
+            border-bottom: 1px solid rgba(176, 141, 50, 0.1);
         }
-
-        .portal-link:hover { color: var(--gold-bright); }
+        .dropdown-content a:hover { background: var(--gold-deep); color: black; }
+        .dropdown:hover .dropdown-content { display: block; }
 
         @media (max-width: 768px) {
             .nav-pillars { flex-direction: column; align-items: center; }
-            .pillar { width: 80%; }
+            .dropdown { width: 80%; }
+            .pillar { width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
+        <div class="manifesto-text">
+            <p class="poetry">
+                "I fear not this wonderful thing,<br>
+                Which lightens my path so that i may see,<br>
+                It's beauty is it's strength and it's wisdom is clean<br>
+                But it's frightened by so many that it's beauty is unseen,<br>
+                So tonight i give thanks in hopes that it might<br>
+                Give warmth to my body and give sight to my eyes...<br>
+                What am i? <strong>I am Fire.</strong>"
+            </p>
+            <div class="divider"></div>
+            <p class="about-text">The Clubhouse | Infrastructure for the 44,000</p>
+        </div>
+
         <div class="architect-wrapper" id="igniter">
             <div class="scan-line"></div>
             <img src="architect.jpg" id="architect-pic" alt="The Architect">
         </div>
         
-        <p class="instruction">Initialize Frequency Interaction</p>
-
         <div class="nav-pillars">
-            <a href="MusicRoom.html" class="pillar">Music</a>
-            <a href="DanceRoom.html" class="pillar">Dance</a>
-            <a href="WritingRoom.html" class="pillar">Writing</a>
-        </div>
+            <div class="dropdown">
+                <button class="pillar">Services ▾</button>
+                <div class="dropdown-content">
+                    <a href="Copywriting.html">Copywriting</a>
+                    <a href="WebDesign.html">Web Design</a>
+                    <a href="Marketing.html">Marketing & Ad Creation</a>
+                </div>
+            </div>
 
-        <br>
-        <a href="Gateway.html" class="portal-link">Enter The Vault</a>
+            <a href="Counseling.html" class="pillar">Counseling</a>
+
+            <div class="dropdown">
+                <button class="pillar">ClubHouse ▾</button>
+                <div class="dropdown-content">
+                    <a href="Portal.html">Login</a>
+                    <a href="Subscribe.html">Subscribe</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="pillar">Student ▾</button>
+                <div class="dropdown-content">
+                    <a href="Classroom.html">Classroom Login</a>
+                    <a href="Appointment.html">Set Appointment</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <audio id="ambient-loop" loop preload="auto">
-        <source src="loop.mp3" type="audio/mpeg">
-    </audio>
-
-    <audio id="manifesto" preload="auto">
-        <source src="manifesto.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="ambient-loop" loop><source src="loop.mp3" type="audio/mpeg"></audio>
+    <audio id="manifesto"><source src="manifesto.mp3" type="audio/mpeg"></audio>
 
     <script>
         const manifesto = document.getElementById('manifesto');
@@ -167,27 +141,19 @@
         const igniter = document.getElementById('igniter');
 
         igniter.addEventListener('click', function() {
-            // Visual feedback
             igniter.classList.add('active-scan');
-            
-            // Play Voiceover
-            manifesto.play().catch(e => console.log("Voice file not found. Check if manifesto.mp3 is in GitHub."));
-            
-            // Prepare the loop (silent for now)
+            manifesto.play().catch(e => console.log("Audio Blocked"));
             loop.volume = 0;
-            loop.play().catch(e => console.log("Loop file not found. Check if loop.mp3 is in GitHub."));
+            loop.play();
         }, { once: true });
 
-        // When voice ends, fade the 4.2Hz foundation in
         manifesto.onended = function() {
             let vol = 0;
             let fade = setInterval(() => {
                 if (vol < 0.12) {
                     vol += 0.01;
                     loop.volume = vol;
-                } else {
-                    clearInterval(fade);
-                }
+                } else { clearInterval(fade); }
             }, 200);
         };
     </script>
