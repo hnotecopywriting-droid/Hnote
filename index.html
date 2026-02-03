@@ -46,7 +46,7 @@
         .architect-wrapper:hover {
             box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
             border-color: var(--gold-bright);
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         #architect-pic {
@@ -55,10 +55,6 @@
             display: block;
             filter: grayscale(20%) contrast(1.1);
             transition: 0.5s;
-        }
-
-        .active-scan #architect-pic {
-            filter: grayscale(0%) contrast(1.2);
         }
 
         /* The Scanning Line Effect */
@@ -142,10 +138,10 @@
     <section class="hero">
         <div class="architect-wrapper" id="igniter">
             <div class="scan-line"></div>
-            <img src="cool me picture.jpg" id="architect-pic" alt="The Architect">
+            <img src="architect.jpg" id="architect-pic" alt="The Architect">
         </div>
         
-        <p class="instruction">Click the Portrait to Initialize Frequency</p>
+        <p class="instruction">Initialize Frequency Interaction</p>
 
         <div class="nav-pillars">
             <a href="MusicRoom.html" class="pillar">Music</a>
@@ -157,12 +153,12 @@
         <a href="Gateway.html" class="portal-link">Enter The Vault</a>
     </section>
 
-    <audio id="ambient-loop" loop>
-        <source src="Foundation_42 (2).mp3" type="audio/mpeg">
+    <audio id="ambient-loop" loop preload="auto">
+        <source src="loop.mp3" type="audio/mpeg">
     </audio>
 
-    <audio id="manifesto">
-        <source src="ElevenLabs_Foundation_42.mp3" type="audio/mpeg">
+    <audio id="manifesto" preload="auto">
+        <source src="manifesto.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -171,28 +167,28 @@
         const igniter = document.getElementById('igniter');
 
         igniter.addEventListener('click', function() {
-            // Activate visual scan
+            // Visual feedback
             igniter.classList.add('active-scan');
             
-            // Play Voice
-            manifesto.play().catch(e => console.log("Audio load error"));
+            // Play Voiceover
+            manifesto.play().catch(e => console.log("Voice file not found. Check if manifesto.mp3 is in GitHub."));
             
-            // Start Foundation (Silent)
+            // Prepare the loop (silent for now)
             loop.volume = 0;
-            loop.play();
+            loop.play().catch(e => console.log("Loop file not found. Check if loop.mp3 is in GitHub."));
         }, { once: true });
 
-        // Smooth transition after speech ends
+        // When voice ends, fade the 4.2Hz foundation in
         manifesto.onended = function() {
             let vol = 0;
             let fade = setInterval(() => {
-                if (vol < 0.15) {
+                if (vol < 0.12) {
                     vol += 0.01;
                     loop.volume = vol;
                 } else {
                     clearInterval(fade);
                 }
-            }, 150);
+            }, 200);
         };
     </script>
 </body>
