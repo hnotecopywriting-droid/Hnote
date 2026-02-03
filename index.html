@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-NOTE | Creative Solutions</title>
+    <title>H-NOTE | The Archive</title>
     <style>
         :root {
             --gold-bright: #f0d78c; 
@@ -21,6 +21,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
         }
 
         .hero {
@@ -30,12 +31,66 @@
             width: 100%;
         }
 
-        .logo-area img {
-            width: 500px;
-            max-width: 90%;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.1));
+        /* The Portrait Container */
+        .architect-wrapper {
+            position: relative;
+            display: inline-block;
+            border: 3px solid var(--gold-deep);
+            padding: 10px;
+            background: #000;
+            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .architect-wrapper:hover {
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            border-color: var(--gold-bright);
+            transform: scale(1.02);
+        }
+
+        #architect-pic {
+            width: 650px; 
+            max-width: 90vw;
+            display: block;
+            filter: grayscale(20%) contrast(1.1);
+            transition: 0.5s;
+        }
+
+        .active-scan #architect-pic {
+            filter: grayscale(0%) contrast(1.2);
+        }
+
+        /* The Scanning Line Effect */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold-bright);
+            opacity: 0;
+            box-shadow: 0 0 15px var(--gold-bright);
+            z-index: 10;
+        }
+
+        .active-scan .scan-line {
+            opacity: 0.7;
+            animation: scanMove 4s linear infinite;
+        }
+
+        @keyframes scanMove {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        .instruction {
+            color: var(--gold-bright);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
             margin-bottom: 40px;
+            text-transform: uppercase;
+            opacity: 0.5;
         }
 
         .nav-pillars {
@@ -47,14 +102,14 @@
 
         .pillar {
             border: 1px solid var(--gold-deep);
-            padding: 20px 40px;
+            padding: 15px 35px;
             text-decoration: none;
             color: var(--gold-bright);
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.8rem;
             transition: 0.4s;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
         }
 
         .pillar:hover {
@@ -64,141 +119,81 @@
         }
 
         .portal-link {
-            margin-top: 60px;
+            margin-top: 40px;
             display: inline-block;
-            color: #666;
+            color: #444;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             letter-spacing: 5px;
             text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .portal-link:hover {
-            color: var(--gold-bright);
-        }
+        .portal-link:hover { color: var(--gold-bright); }
 
-        /* Responsive Mobile View */
         @media (max-width: 768px) {
-            .nav-pillars {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .pillar {
-                width: 80%;
-        
-        .architect-wrapper {
-    position: relative;
-    display: inline-block;
-    border: 2px solid var(--gold-deep);
-    padding: 10px;
-    background: #000;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.architect-wrapper:hover {
-    box-shadow: 0 0 30px rgba(240, 215, 140, 0.4);
-    border-color: var(--gold-bright);
-}
-
-#architect-pic {
-    width: 600px; /* Adjusted for the wide frame */
-    max-width: 100%;
-    display: block;
-    filter: sepia(20%) contrast(1.1);
-}
-
-.instruction {
-    color: var(--gold-bright);
-    font-size: 0.6rem;
-    letter-spacing: 4px;
-    margin-top: 15px;
-    opacity: 0.6;
-}
+            .nav-pillars { flex-direction: column; align-items: center; }
+            .pillar { width: 80%; }
         }
-     }     
-/* A subtle gold line that moves across the picture */
-.scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--gold-bright);
-    opacity: 0;
-    box-shadow: 0 0 10px var(--gold-bright);
-}
-
-.active-scan .scan-line {
-    opacity: 0.5;
-    animation: scan 4s linear infinite;
-}
-
-@keyframes scan {
-    0% { top: 0%; }
-    100% { top: 100%; }
-}
     </style>
 </head>
 <body>
 
-   <section class="hero">
-    <div class="logo-area">
-        <div class="architect-wrapper">
-            <img src="cool me picture.jpg" id="architect-pic" alt="The Architect">
+    <section class="hero">
+        <div class="architect-wrapper" id="igniter">
             <div class="scan-line"></div>
+            <img src="cool me picture.jpg" id="architect-pic" alt="The Architect">
         </div>
-        <p class="instruction">CLICK THE ARCHITECT TO IGNITE FREQUENCY</p>
-    </div>
+        
+        <p class="instruction">Click the Portrait to Initialize Frequency</p>
 
-    <div class="nav-pillars">
-        <a href="MusicRoom.html" class="pillar">Music</a>
-        <a href="DanceRoom.html" class="pillar">Dance</a>
-        <a href="WritingRoom.html" class="pillar">Writing</a>
-    </div>
+        <div class="nav-pillars">
+            <a href="MusicRoom.html" class="pillar">Music</a>
+            <a href="DanceRoom.html" class="pillar">Dance</a>
+            <a href="WritingRoom.html" class="pillar">Writing</a>
+        </div>
 
-    <br>
-    <a href="Gateway.html" class="portal-link">Enter The Vault</a>
-</section>
-<audio id="ambient-loop" loop>
-    <source src="Foundation_42 (2).mp3" type="audio/mpeg">
-</audio>
+        <br>
+        <a href="Gateway.html" class="portal-link">Enter The Vault</a>
+    </section>
 
-<audio id="manifesto">
-    <source src="ElevenLabs_Foundation_42.mp3" type="audio/mpeg">
-</audio>
+    <audio id="ambient-loop" loop>
+        <source src="Foundation_42 (2).mp3" type="audio/mpeg">
+    </audio>
 
-<script>
-   const manifesto = document.getElementById('manifesto');
-const loop = document.getElementById('ambient-loop');
-const picWrapper = document.querySelector('.architect-wrapper');
+    <audio id="manifesto">
+        <source src="ElevenLabs_Foundation_42.mp3" type="audio/mpeg">
+    </audio>
 
-picWrapper.addEventListener('click', function() {
-    // Add the scanning animation
-    picWrapper.classList.add('active-scan');
-    
-    // Start the voice
-    manifesto.play();
-    
-    // Start the foundation loop in the background at zero
-    loop.volume = 0;
-    loop.play();
-}, { once: true });
+    <script>
+        const manifesto = document.getElementById('manifesto');
+        const loop = document.getElementById('ambient-loop');
+        const igniter = document.getElementById('igniter');
 
-manifesto.onended = function() {
-    // Fade the foundation up once the voice finishes
-    let vol = 0;
-    let fade = setInterval(() => {
-        if (vol < 0.15) {
-            vol += 0.01;
-            loop.volume = vol;
-        } else {
-            clearInterval(fade);
-        }
-    }, 150);
-};
-</script>
+        igniter.addEventListener('click', function() {
+            // Activate visual scan
+            igniter.classList.add('active-scan');
+            
+            // Play Voice
+            manifesto.play().catch(e => console.log("Audio load error"));
+            
+            // Start Foundation (Silent)
+            loop.volume = 0;
+            loop.play();
+        }, { once: true });
+
+        // Smooth transition after speech ends
+        manifesto.onended = function() {
+            let vol = 0;
+            let fade = setInterval(() => {
+                if (vol < 0.15) {
+                    vol += 0.01;
+                    loop.volume = vol;
+                } else {
+                    clearInterval(fade);
+                }
+            }, 150);
+        };
+    </script>
 </body>
 </html>
