@@ -2,50 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>H-Note Admin | Clinical Business Assessment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-NOTE | Assessment</title>
     <style>
-        body { background: #f4f4f4; color: #333; font-family: Arial, sans-serif; padding: 40px; }
-        .file-container { background: white; border: 1px solid #ccc; padding: 20px; box-shadow: 5px 5px 0px #d4af37; max-width: 800px; margin: auto; }
-        h1 { border-bottom: 2px solid #000; padding-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; }
-        .assessment-row { display: flex; justify-content: space-between; margin: 15px 0; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
-        input[type="number"] { width: 50px; border: 1px solid #d4af37; text-align: center; }
-        textarea { width: 100%; height: 60px; margin-top: 10px; border: 1px solid #ccc; }
-        .audit-stamp { color: #888; font-size: 0.7rem; margin-top: 30px; text-align: right; text-transform: uppercase; }
+        :root { --gold: #f0d78c; --deep-gold: #b08d32; }
+        body { 
+            margin: 0; background: #0a0a0a; color: white; 
+            font-family: 'Times New Roman', serif; 
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .form-container { 
+            width: 100%; max-width: 600px; padding: 40px; 
+            border: 1px solid var(--deep-gold); background: rgba(255,255,255,0.02);
+            text-align: left;
+        }
+        h2 { letter-spacing: 5px; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 10px; }
+        .subtitle { text-align: center; font-size: 0.7rem; color: #888; letter-spacing: 3px; margin-bottom: 40px; }
+        
+        label { display: block; margin-top: 25px; color: var(--gold); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        
+        input, textarea, select {
+            width: 100%; padding: 12px; margin-top: 8px;
+            background: #111; border: 1px solid #333; color: white;
+            font-family: 'Times New Roman', serif; box-sizing: border-box;
+            outline: none; transition: 0.3s;
+        }
+        
+        .radio-group { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        
+        .submit-btn {
+            background: none; border: 1px solid var(--gold); color: var(--gold);
+            padding: 15px 40px; text-transform: uppercase; letter-spacing: 4px;
+            cursor: pointer; transition: 0.4s; width: 100%; margin-top: 40px;
+        }
+        .submit-btn:hover { background: var(--gold); color: black; }
+        
+        .back-link { display: block; margin-top: 30px; text-align: center; color: #555; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-<div class="file-container">
-    <h1>Venture Rehabilitation Assessment & Intake</h1>
-    <p><strong>Client Name:</strong> <input type="text" placeholder="Full Name"> | <strong>Date:</strong> 2026-02-01</p>
+<div class="form-container">
+    <h2>Assessment Questionnaire</h2>
+    <p class="subtitle">DETERMINING PRIORITY OF FREQUENCY</p>
     
-    <div class="assessment-row">
-        <span>1. Plans & Development (Vision/Strategy)</span>
-        <input type="number" min="1" max="10" value="5">
-    </div>
-    <div class="assessment-row">
-        <span>2. Demographical (Market/Audience)</span>
-        <input type="number" min="1" max="10" value="5">
-    </div>
-    <div class="assessment-row">
-        <span>3. Financial (Capital/Revenue)</span>
-        <input type="number" min="1" max="10" value="5">
-    </div>
-    <div class="assessment-row">
-        <span>4. Management (Leadership/System)</span>
-        <input type="number" min="1" max="10" value="5">
-    </div>
-    <div class="assessment-row">
-        <span>5. Product/Services (The Object)</span>
-        <input type="number" min="1" max="10" value="5">
-    </div>
+    <form action="https://formspree.io/f/mbdkboqj" method="POST">
+        <label>Full Name / Identifier</label>
+        <input type="text" name="name" required>
 
-    <h3>Clinical Summary / Primary Business Obstacle</h3>
-    <textarea placeholder="Note the 'Substance' of their failure here..."></textarea>
+        <label>Which Pillar currently feels the most "Unseen"?</label>
+        <select name="priority-pillar" required>
+            <option value="" disabled selected>Select Primary Focus</option>
+            <option value="music">Music (Frequency & Resonance)</option>
+            <option value="dance">Dance (Kinetic Expression)</option>
+            <option value="writing">Writing (Neural Linguistic Precision)</option>
+            <option value="performance">Performance (Command of Presence)</option>
+            <option value="business">Business (The Lead Act)</option>
+        </select>
 
-    <button style="margin-top: 20px; background: #000; color: #d4af37; border: none; padding: 10px 20px; cursor: pointer; width: 100%;">SAVE TO AUDIT FILE</button>
-    
-    <div class="audit-stamp">H-Note Compliance // Protocol 4.2-7.2 // Secure File</div>
+        <label>On a scale of 1-10, how loud is the "Background Noise" in your life right now?</label>
+        <input type="range" min="1" max="10" name="noise-level" style="accent-color: var(--gold);">
+
+        <label>Describe the "hidden skill" you feel is ready to be unleashed:</label>
+        <textarea name="hidden-skill" rows="4" placeholder="Be precise..."></textarea>
+
+        <label>What is the biggest obstacle stopping you from being the 'Lead Act'?</label>
+        <textarea name="obstacle" rows="4" placeholder="Identify the friction..."></textarea>
+
+        <button type="submit" class="submit-btn">SUBMIT FOR REVIEW</button>
+    </form>
+
+    <a href="index.html" class="back-link">← RETURN TO CLUBHOUSE</a>
 </div>
 
 </body>
