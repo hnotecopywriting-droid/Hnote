@@ -107,6 +107,39 @@
         <br>
         <a href="Gateway.html" class="portal-link">Enter The Vault</a>
     </section>
+<audio id="ambient-loop" loop>
+    <source src="Foundation_42 (2).mp3" type="audio/mpeg">
+</audio>
 
+<audio id="manifesto">
+    <source src="ElevenLabs_Foundation_42.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const manifesto = document.getElementById('manifesto');
+    const loop = document.getElementById('ambient-loop');
+
+    // Triggered on the first click
+    document.addEventListener('click', function() {
+        manifesto.play().catch(e => console.log("Audio play blocked until interaction."));
+    }, { once: true });
+
+    // When the voice finishes, the vibration takes over
+    manifesto.onended = function() {
+        loop.volume = 0;
+        loop.play();
+        
+        // Smooth fade-in
+        let vol = 0;
+        let fade = setInterval(() => {
+            if (vol < 0.15) {
+                vol += 0.01;
+                loop.volume = vol;
+            } else {
+                clearInterval(fade);
+            }
+        }, 150); 
+    };
+</script>
 </body>
 </html>
