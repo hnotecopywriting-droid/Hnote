@@ -49,12 +49,13 @@
         @keyframes scanMove { 0% { top: 0%; } 100% { top: 100%; } }
 
         /* Navigation Pillars */
-        .nav-pillars { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-pillars { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
         .pillar {
             border: 1px solid var(--gold-deep); padding: 12px 25px;
             text-decoration: none; color: var(--gold-bright);
             text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
             transition: 0.4s; background: rgba(0,0,0,0.5); cursor: pointer;
+            display: inline-block;
         }
         .pillar:hover { background: var(--gold-deep); color: black; }
 
@@ -64,6 +65,7 @@
             display: none; position: absolute; background: rgba(10, 10, 10, 0.95);
             min-width: 220px; border: 1px solid var(--gold-deep); z-index: 100;
             backdrop-filter: blur(10px);
+            left: 50%; transform: translateX(-50%);
         }
         .dropdown-content a {
             color: var(--gold-bright); padding: 12px 20px; text-decoration: none;
@@ -76,7 +78,7 @@
         @media (max-width: 768px) {
             .nav-pillars { flex-direction: column; align-items: center; }
             .dropdown { width: 80%; }
-            .pillar { width: 100%; }
+            .pillar { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -104,7 +106,7 @@
         
         <div class="nav-pillars">
             <div class="dropdown">
-                <button class="pillar">Services ▾</button>
+                <div class="pillar">Services ▾</div>
                 <div class="dropdown-content">
                     <a href="Copywriting.html">Copywriting</a>
                     <a href="WebDesign.html">Web Design</a>
@@ -115,7 +117,7 @@
             <a href="Counseling.html" class="pillar">Counseling</a>
 
             <div class="dropdown">
-                <button class="pillar">ClubHouse ▾</button>
+                <div class="pillar">ClubHouse ▾</div>
                 <div class="dropdown-content">
                     <a href="Portal.html">Login</a>
                     <a href="Subscribe.html">Subscribe</a>
@@ -123,7 +125,7 @@
             </div>
 
             <div class="dropdown">
-                <button class="pillar">Student ▾</button>
+                <div class="pillar">Student ▾</div>
                 <div class="dropdown-content">
                     <a href="Classroom.html">Classroom Login</a>
                     <a href="Appointment.html">Set Appointment</a>
@@ -132,8 +134,13 @@
         </div>
     </section>
 
-    <audio id="ambient-loop" loop><source src="loop.mp3" type="audio/mpeg"></audio>
-    <audio id="manifesto"><source src="manifesto.mp3" type="audio/mpeg"></audio>
+    <audio id="ambient-loop" loop preload="auto">
+        <source src="loop.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="manifesto" preload="auto">
+        <source src="manifesto.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         const manifesto = document.getElementById('manifesto');
@@ -141,19 +148,28 @@
         const igniter = document.getElementById('igniter');
 
         igniter.addEventListener('click', function() {
+            // Start the visual scan
             igniter.classList.add('active-scan');
-            manifesto.play().catch(e => console.log("Audio Blocked"));
+            
+            // Set voice to full, loop to 0
+            manifesto.volume = 1.0;
             loop.volume = 0;
+            
+            // Trigger both
+            manifesto.play().catch(e => console.log("Audio blocked. Ensure files are named loop.mp3 and manifesto.mp3"));
             loop.play();
         }, { once: true });
 
+        // Smoothly fade in the hum after the voice ends
         manifesto.onended = function() {
             let vol = 0;
             let fade = setInterval(() => {
-                if (vol < 0.12) {
-                    vol += 0.01;
+                if (vol < 0.07) { // Set to a subtle 7% volume for a mysterious feel
+                    vol += 0.005;
                     loop.volume = vol;
-                } else { clearInterval(fade); }
+                } else {
+                    clearInterval(fade);
+                }
             }, 200);
         };
     </script>
